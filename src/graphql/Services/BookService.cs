@@ -9,11 +9,11 @@ public class BookService
 {
     private readonly IMongoCollection<Book> _booksCollection;
 
-    public BookService(IOptions<MongoDBSettings> mongoDBSettings)
+    public BookService(IOptions<MongoDBSettings> mongoDbSettings)
     {
-        var mongoClient = new MongoClient(mongoDBSettings.Value.ConnectionString);
-        var mongoDatabase = mongoClient.GetDatabase(mongoDBSettings.Value.DatabaseName);
-        _booksCollection = mongoDatabase.GetCollection<Book>(mongoDBSettings.Value.BooksCollectionName);
+        var mongoClient = new MongoClient(mongoDbSettings.Value.ConnectionString);
+        var mongoDatabase = mongoClient.GetDatabase(mongoDbSettings.Value.DatabaseName);
+        _booksCollection = mongoDatabase.GetCollection<Book>(mongoDbSettings.Value.BooksCollectionName);
     }
 
     public async Task<List<Book>> GetAllAsync() =>

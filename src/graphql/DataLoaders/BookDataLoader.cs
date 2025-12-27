@@ -1,7 +1,7 @@
 using Bogus;
 using graphql.Models;
 
-namespace graphql.Extension;
+namespace graphql.DataLoaders;
 
 public static class BookDataLoader
 {

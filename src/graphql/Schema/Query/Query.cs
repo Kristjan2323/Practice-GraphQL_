@@ -4,29 +4,29 @@ using graphql.Services;
 
 namespace graphql.Schema.Query;
 
-public class Query
+public class Query(BookService bookService, AuthorService authorService)
 {
-    public async Task<List<Book>> GetBooks([Service] BookService bookService)
+    public async Task<List<Book>> GetBooks()
     {
         return await bookService.GetAllAsync();
     }
 
-    public async Task<Book?> GetBook(string id, [Service] BookService bookService)
+    public async Task<Book?> GetBook(string id)
     {
         return await bookService.GetByIdAsync(id);
     }
 
-    public async Task<List<Author>> GetAuthors([Service] AuthorService authorService)
+    public async Task<List<Author>> GetAuthors()
     {
         return await authorService.GetAllAsync();
     }
 
-    public async Task<Author?> GetAuthor(string id, [Service] AuthorService authorService)
+    public async Task<Author?> GetAuthor(string id)
     {
         return await authorService.GetByIdAsync(id);
     }
 
-    public async Task<List<Book>> GetBooksByAuthor(string authorId, [Service] BookService bookService)
+    public async Task<List<Book>> GetBooksByAuthor(string authorId)
     {
         return await bookService.GetByAuthorIdAsync(authorId);
     }

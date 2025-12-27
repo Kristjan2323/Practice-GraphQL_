@@ -8,7 +8,7 @@ public record Book
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; init; }
-
+    
     public string Title { get; init; } = string.Empty;
 
     public int Pages { get; init; }

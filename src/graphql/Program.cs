@@ -1,4 +1,5 @@
 using graphql.Configuration;
+using graphql.DataLoaders;
 using graphql.Schema.Mutations;
 using graphql.Schema.Query;
 using graphql.Schema.Subscription;
@@ -24,7 +25,10 @@ builder.Services
     .AddMutationType<Mutation>()
     .AddMutationConventions()
     .AddSubscriptionType<Subscription>()
-    .AddInMemorySubscriptions();
+    .AddInMemorySubscriptions()
+    .AddType<BookType>()
+    .AddType<AuthorType>()
+    .AddDataLoader<AuthorByIdDataLoader>();
 
 var app = builder.Build();
 
