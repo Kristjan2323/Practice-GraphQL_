@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graphql", "src\graphql\graphql.csproj", "{93291999-CC6F-43A9-B6A4-F73B9F49E3A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server", "server", "{6B729ACA-7174-4CD3-9C5A-0EC777708FA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{5E48F349-3F8E-40F6-8242-9003CD83EF22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,5 +39,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{93291999-CC6F-43A9-B6A4-F73B9F49E3A2} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{827E0CD3-B72D-47B6-A68D-7590B98EB39B} = {6B729ACA-7174-4CD3-9C5A-0EC777708FA4}
 	EndGlobalSection
 EndGlobal
