@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client/react';
+import { addBookMutation } from '../graphql/mutations/booksMutations';
 
 const AddBookForm = () => {
   const [formData, setFormData] = useState({
@@ -7,22 +9,36 @@ const AddBookForm = () => {
     authorId: ''
   });
 
+  const [addBook, { data, loading, error }] = useMutation(addBookMutation)
+  console.log("🚀 ~ AddBookForm ~ loading:", loading)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Your logic here
-    console.log('Form data:', {
-      title: formData.title,
-      pages: parseInt(formData.pages),
-      authorId: formData.authorId
-    });
+
+    addBook({
+      variables: {
+        input: {
+          title: formData.title,
+          authorId: '694eec5e5b64a8be293c3c59',
+          pages: parseInt(formData.pages)
+        }
+        
+      }
+    })
+    console.log('data', data)
+
+    if (error) {
+      console.error('graph err', error)
+    }
   };
 
   return (

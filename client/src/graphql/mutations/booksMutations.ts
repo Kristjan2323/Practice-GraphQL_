@@ -7,7 +7,6 @@ export const addBookMutation = gql`
         id
         title
         pages
-        authorId
       }
     }
   }
