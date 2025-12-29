@@ -42,6 +42,16 @@ builder.Services
     // DataLoaders are SCOPED per request - each GraphQL query gets a fresh instance
     .AddDataLoader<AuthorByIdDataLoader>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ReactClient", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,6 +63,8 @@ if (app.Environment.IsDevelopment())
 app.UseWebSockets();
 
 app.MapGraphQL();
+
+app.UseCors("ReactClient");
 
 app.UseHttpsRedirection();
 
